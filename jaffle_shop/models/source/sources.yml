@@ -2,7 +2,8 @@ version: 2
 
 sources:
     - name: source
-      database: dbt_learn
+      database: '{{ target.catalog }}'
+      schema: source
       tables:
         - name: fact_sales
         - name: fact_returns

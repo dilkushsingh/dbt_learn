@@ -5,7 +5,7 @@ snapshots:
       relation: ref("marts_items")
       config:
         schema: snapshots
-        catalog_name: dbt_learn
+        catalog_name: '{{ target.catalog }}'
         unique_key: id
         strategy: timestamp
         updated_at: updateDate
