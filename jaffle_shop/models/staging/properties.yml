@@ -5,3 +5,37 @@ models:
       config:
         materialized: table
 
+    - name: stg_sales
+      columns:
+        - name: sales_id
+          data_tests:
+            - unique
+            - not_null
+        - name: gross_amount
+          data_tests:
+            - generic_non_negative
+
+    - name: stg_store
+      columns:
+        - name: store_sk
+          data_tests:
+            - unique
+            - not_null
+        - name: store_name
+          data_tests:
+            - accepted_values: 
+                arguments: 
+                    values: ['MegaMart Manhattan', 'MegaMart Brooklyn', 'MegaMart Austin', 'MegaMart San Jose', 'MegaMart Toronto']
+                config:
+                    severity: warn
+
+# unit_tests:
+#   - name: test_order_total
+#     model: stg_sales
+#     given:
+#       - input: source('source', 'fact_sales')
+#         rows:
+#           - {sales_id: 1, quantity: 2, unit_price: 10}
+#     expect:
+#       rows:
+#         - {sales_id: 1, gross_amount: 20}
