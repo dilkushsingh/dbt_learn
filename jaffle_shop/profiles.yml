@@ -1,0 +1,12 @@
+jaffle_shop:
+  target: dev
+  outputs:
+    dev:
+      type: databricks
+      database: dbt_learn
+      schema: default
+      host: dbc-1371f2ec-a1ec.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/a02c2710052dce39
+      auth_type: oauth
+      profile: dilkushsingh
+      threads: 16
