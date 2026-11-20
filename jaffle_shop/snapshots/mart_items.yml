@@ -1,0 +1,12 @@
+version: 2
+
+snapshots:
+    - name: marts_items_snapshot
+      relation: ref("marts_items")
+      config:
+        schema: snapshots
+        catalog_name: dbt_learn
+        unique_key: id
+        strategy: timestamp
+        updated_at: updateDate
+        dbt_valid_to_current: null
